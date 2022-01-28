@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sewage Board</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body> -->
+  <%- include("partials/header"); -%>
+    <form method="post" action="/sewageboard" class="formarea">
+  <div class="form-group">
+    <label for="UserId">Phone Number</label>
+    <input type="text" name="phonenumber" class="form-control" id="UserID" aria-describedby="UserHelp" placeholder="Enter your Phone nNumber">
+    <small id="UserHelp" class="form-text text-muted">Your Phone Number will be confidential,will not be shared with anyone</small>
+  </div>
+  <div class="form-group">
+    <label for="Address">Address</label>
+    <input type="text" name="addresssewageboard" class="form-control" id="Address" placeholder="Address">
+  </div>
+  <div class="form-group">
+    <label for="Landmark">Nearest Landmark</label>
+    <input list="Landmark" name="Landmark" class="form-control" placeholder="Nearest Landmark">
+    <datalist  id="Landmark">
+
+      <option value="JP Nagar">
+      <option value="VishveshwaraNagar">
+      <option value="Bogadi">
+      <option value="SiddharthNagar">
+      <option value="Ramkrishna Nagar">
+      <option value="Srirampura">
+        <option value="Nazarbad">
+        <option value="Vijaynagar 2nd Stage">
+        <option value="Sewage Farm">
+        <option value="TK Layout">
+        <option value="Vidyaranyapuram">
+        <option value="K C Layout">
+        <option value="Nivedita Nagar">
+        <option value="Ilwala">
+        <option value="Hootgalli">
+        <option value="Kuvempunagar">
+        <option value="Saraswathipuram">
+        <option value="Near Kukkrahalli Lake">
+        <option value="Mysore Zoo">
+        <option value="Ittigegudu">
+        <option value="Yadavgiri">
+        <option value="Rajiv Nagar">
+        <option value="Vontikoppal">
+        <option value="Jayalakshmi Puram">
+        <option value="Kalidasa Road">
+        <option value="Ramaswamy Circle">
+        <option value="Agrahara">
+        <option value="Ashoka Road">
+        <option value="DD Urs Road">
+        <option value="Bannimantap">
+        <option value="Ring Road">
+        <option value="Mandi Mohalla">
+        <option value="Sub Urban Bus Stand">
+        <option value="Mysore Railway Station">
+        <option value="MG Road">
+     </datalist>
+  </div>
+  <div class="form-group">
+  <label for="ManholeIssue">Is your compain related to Manhole Issue?</label><br>
+  <div class="form-check form-check-inline mb-0 me-4">
+  <input class="form-check-input" type="radio" name="ManholeIssue" id="YesManhole" value="Yes" required/>
+  <label class="form-check-label" for="YesManhole">Yes</label>
+  </div>
+
+  <div class="form-check form-check-inline mb-0 me-4">
+  <input class="form-check-input" type="radio" name="ManholeIssue" id="NoManhole" value="No" required/>
+  <label class="form-check-label" for="NoManhole">No</label>
+  </div>
+</div>
+<div class="form-group">
+<label for="DrainageIssue">Is your complain related to Drainage issues?</label><br>
+<div class="form-check form-check-inline mb-0 me-4">
+<input class="form-check-input" type="radio" name="DrainageIssue" id="YesDrainage" value="Yes" required/>
+<label class="form-check-label" for="YesDrainage">Yes</label>
+</div>
+
+<div class="form-check form-check-inline mb-0 me-4">
+<input class="form-check-input" type="radio" name="DrainageIssue" id="NoDraiange" value="No" required/>
+<label class="form-check-label" for="NoDrainage">No</label>
+</div>
+</div>
+<div class="form-group">
+<label for="Garbage">Is your complain related to Garbage Collection and Disposal?</label><br>
+<div class="form-check form-check-inline mb-0 me-4">
+<input class="form-check-input" type="radio" name="Garbage" id="YesGarbage" value="Yes" required/>
+<label class="form-check-label" for="YesGarbage">Yes</label>
+</div>
+
+<div class="form-check form-check-inline mb-0 me-4">
+<input class="form-check-input" type="radio" name="Garbage" id="NoGarbage" value="No" required/>
+<label class="form-check-label" for="NoGarbage">No</label>
+</div>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlTextarea1">Use this TextBox to kindly inform us more about the complaints you have at your place </label>
+    <textarea name="textSB" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<%- include("partials/footer"); -%>
+  <!-- </body>
+</html> -->

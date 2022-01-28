@@ -1,0 +1,151 @@
+<%- include("partials/header"); -%>
+<div class="formarea">
+<h3>Waterboard related Complaints</h3>
+<table class="table table-hover ">
+<thead class="tablehead">
+<tr>
+<th scope="col">Complaint Id</th>
+<th scope="col">Address</th>
+<th scope="col">Nearest Landmark</th>
+<th scope="col">Grievance</th>
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items.length > 0){ %>
+<% for(var i = 0;i < items.length;i++) { %>
+<tr>
+
+<td><%= items[i].complaintid %></td>
+<td><%= items[i].address %></td>
+<td><%= items[i].landmark %></td>
+<td><%= items[i].textwb %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+
+<h3>Electricity Board Related Complaints:</h3>
+<table class="table table-hover ">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Address</th>
+<th scope="col">Nearest Landmark</th>
+<th scope="col">Grievance</th>
+
+</tr>
+</thead>
+
+
+<tbody class="tablerow">
+<% if(items1.length > 0){ %>
+<% for(var i = 0;i < items1.length;i++) { %>
+<tr>
+
+<td><%= items1[i].complaintid %></td>
+<td><%= items1[i].address %></td>
+<td><%= items1[i].landmark %></td>
+<td><%= items1[i].texteb %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+<h3>Sewage board related Complaints</h3>
+<table class="table table-hover ">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Address</th>
+<th scope="col">Nearest Landmark</th>
+<th scope="col">Grievance</th>
+
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items2.length > 0){ %>
+<% for(var i = 0;i < items2.length;i++) { %>
+<tr>
+<td><%= items2[i].complaintid %></td>
+<td><%= items2[i].address %></td>
+<td><%= items2[i].landmark %></td>
+<td><%= items2[i].textsb %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+
+<h3>Road Maintenance related Complaints</h3>
+<table class="table table-hover   ">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Address</th>
+<th scope="col">Nearest Landmark</th>
+<th scope="col">Grievances</th>
+
+</tr>
+</thead>
+
+
+<tbody class="tablerow">
+<% if(items3.length > 0){ %>
+<% for(var i = 0;i < items3.length;i++) { %>
+<tr>
+
+<td><%= items3[i].complaintid %></td>
+<td><%= items3[i].address %></td>
+<td><%= items3[i].landmark %></td>
+<td><%= items3[i].textrm %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+
+<h3>Road Construction related Complaints</h3>
+<table class="table table-hover  ">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Address</th>
+<th scope="col">Nearest Landmark</th>
+<th scope="col">Grievances</th>
+
+</tr>
+</thead>
+
+
+<tbody class="tablerow">
+<% if(items4.length > 0){ %>
+<% for(var i = 0;i < items4.length;i++) { %>
+<tr>
+<td><%= items4[i].complaintid %></td>
+<td><%= items4[i].address %></td>
+<td><%= items4[i].landmark %></td>
+<td><%= items4[i].textc %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+</div>
+<%- include("partials/footer"); -%>

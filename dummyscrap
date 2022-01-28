@@ -1,0 +1,441 @@
+//waterboard datalist!
+<!-- <input list="WaterAvailability" name="WaterAvailability" class="form-control" placeholder="Yes/No" required> -->
+<!-- <datalist  id="WaterAvailability"> -->
+  <!-- <option selected>Choose Yes/No</option> -->
+  <!-- <option value="Yes">
+  <option value="No">
+ </datalist> -->
+//waterboard datalist meterfault
+ <!-- <input list="MeterFault" name="MeterFault" class="form-control" placeholder="Yes/No" required>
+ <datalist  id="MeterFault"> -->
+   <!-- <option selected>Choose Yes/No</option> -->
+   <!-- <option value="Yes">
+   <option value="No">
+  </datalist> -->
+ <!-- <select class="custom-select" id="inputGroupSelect01">
+ <option selected>Choose Yes/No</option>
+ <option value="Yes">Yes</option>
+ <option value="No">No</option>
+ </select> -->
+//waterboard datalist pipeline
+ <input list="PipelineAndInfrastructure" name="PipelineAndInfrastructure" class="form-control" placeholder="Yes/No" required>
+ <datalist  id="PipelineAndInfrastructure">
+   <!-- <option selected>Choose Yes/No</option> -->
+   <option value="Yes">
+   <option value="No">
+  </datalist>
+ </div>
+ //line breakdown datalist
+ <label for="LineBreakDown">Is your problems related to Line Breakdown?</label><br>
+ <input list="LineBreakDown" name="LineBreakDown" class="form-control" placeholder="Yes/No">
+ <datalist  id="LineBreakDown">
+   <!-- <option selected>Choose Yes/No</option> -->
+   <option value="Yes">
+   <option value="No">
+  </datalist>
+  <input list="BillingIssue" name="BillingIssue" class="form-control" placeholder="Yes/No">
+  <datalist  id="BillingIssue">
+    <!-- <option selected>Choose Yes/No</option> -->
+    <option value="Yes">
+    <option value="No">
+   </datalist>
+   <datalist  id="NewConnection">
+     <!-- <option selected>Choose Yes/No</option> -->
+     <option value="Yes">
+     <option value="No">
+    </datalist>
+   <!-- <select class="custom-select" id="inputGroupSelect01">
+   <option selected>Choose Yes/No</option>
+   <option value="Yes">Yes</option>
+   <option value="No">No</option>
+   </select> -->
+   <input list="NewConnection" name="NewConnection" class="form-control" placeholder="Yes/No">
+   //sewageboard datalist
+   <input list="ManholeIssue" name="ManholeIssue" class="form-control" placeholder="Yes/No">
+   <datalist  id="ManholeIssue">
+     <!-- <option selected>Choose Yes/No</option> -->
+     <option value="Yes">
+     <option value="No">
+    </datalist>
+    <input list="DrainageIssue" name="DrainageIssue" class="form-control" placeholder="Yes/No">
+    <datalist  id="DrainageIssue">
+      <!-- <option selected>Choose Yes/No</option> -->
+      <option value="Yes">
+      <option value="No">
+     </datalist>
+    <!-- <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose Yes/No</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    </select> -->
+    <input list="Garbage" name="Garbage" class="form-control" placeholder="Yes/No">
+    <datalist  id="Garbage">
+      <!-- <option selected>Choose Yes/No</option> -->
+      <option value="Yes">
+      <option value="No">
+     </datalist>
+
+     //images dashboard(original)
+     link 1 https://static.pexels.com/photos/7357/startup-photos.jpg
+     //login Webpage
+     app.post("/", async (req, res) => {
+       const user = req.body.name;
+       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+
+
+       db.getConnection(async (err, connection) => {
+         if (err) throw (err)
+         const sqlSearch = "SELECT * FROM user_login WHERE user_loginName=?"
+         const search_query = mysql.format(sqlSearch, [user])
+
+
+
+         const sqlInsert = "INSERT INTO user_login VALUES(0,?,?)"
+         const insert_query = mysql.format(sqlInsert, [user, hashedPassword])
+         await connection.query(search_query, async (err, result) => {
+           if (err) throw (err)
+           console.log("Search Results")
+           console.log(result.length)
+
+
+
+           if (result.length != 0) {
+             connection.release()
+             console.log("User already exists")
+             res.sendStatus(409)
+           } else {
+             await connection.query(insert_query, (err, result) => {
+               connection.release()
+               if (err) throw (err)
+               console.log("Created New User")
+               console.log(result.insertId)
+               res.sendStatus(201)
+             })
+           }
+         })
+       })
+     });
+
+
+
+     app.post("/login", (req, res) => {
+       const user = req.body.name
+       const password = req.body.password
+       db.getConnection( (err, connection) => {
+         if (err) throw (err)
+         const sqlSearch = "Select * from user_login where user_loginName = ?"
+         const search_query = mysql.format(sqlSearch, [user])
+
+          connection.query(search_query,  (err, result) => {
+           connection.release()
+           if (err) throw (err)
+           if (result.length == 0) {
+             console.log("--------> User does not exist")
+             res.sendStatus(404)
+           } else {
+             const hashedPassword = result[0].password
+             //get the hashedPassword from result
+             if ( bcrypt.compare(password, hashedPassword)) {
+               console.log("---------> Login Successful")
+               res.send(`${user} is logged in!`)
+             } else {
+               console.log("---------> Password Incorrect")
+               res.send("Password incorrect!")
+             } //end of bcrypt.compare()
+           } //end of User exists i.e. results.length==0
+         }) //end of connection.query()
+       }) //end of db.connection()
+     }) //end of app.post()
+  //using this below code to insert value to any particular table
+  // db.query('INSERT INTO  waterboard(userid,address, WaterAvailability, MeterFault, Pipeline, ComplaintBriefing) VALUES("'+user_id+'","'+address+'", "'+wateravailability+'","'+meterfault+'","'+pipeline+'","'+address+'")',(err,rows)=>{
+  //   if(err){
+  //      throw err
+  //    }
+  //    else{
+  //      console.log('Data sent bois');
+  //      console.log(rows);
+  //    }
+  //  })
+  // connection.query('INSERT INTO  employee_details(id,employee_name, employee_designation) VALUES(4,"John", "HR Manager")',(err,rows)=>{
+  //   if(err){
+  //      throw err
+  //    }
+  //    else{
+  //      console.log('Data sent bois');
+  //      console.log(rows);
+  //    }
+  //  })
+  // connection.query("CREATE TABLE UserInfo(ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,UserID AS 'UID' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,name varchar(45), address varchar(250)",(err,rows)=>{
+  //   if(err){
+  //      throw err
+  //    }
+  //    else{
+  //      console.log('Data sent bois');
+  //      console.log(rows);
+  //    }
+  //  })
+  //waterboard ka code
+  <!-- <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Water Board</title>
+  </head>
+
+  <body>
+    <form action="/" method="post">
+   <label for="UserID">UserId *</label><br>
+   <input type="text" id="UserID" name="UserID" ><br><br>
+   <label for="Address">Address</label><br>
+   <input type="text" id="Address" name="Address"><br><br>
+   <label for="WaterAvailability">Water Availability Problems</label><br>
+   <input list="WaterAvailability" name="WaterAvailability" placeholder="Yes/No">
+   <datalist id="WaterAvailability">
+     <option value="Yes">
+     <option value="No">
+    </datalist><br><br>
+    <label for="MeterFault">Meter Fault Problems</label><br>
+    <input list="MeterFault" name="MeterFault" placeholder="Yes/No">
+    <datalist id="MeterFault">
+      <option value="Yes">
+      <option value="No">
+     </datalist><br><br>
+     <label for="Pipeline">Pipeline and Infrastructure Problems</label><br>
+     <input list="Pipeline" name="Pipeline" placeholder="Yes/No">
+     <datalist id="Pipeline">
+       <option value="Yes">
+       <option value="No">
+      </datalist>
+
+
+   <input type="submit" value="Submit">
+  </form>
+     -->
+     <!-- <!DOCTYPE html>
+     <html lang="en" dir="ltr">
+       <head>
+         <meta charset="utf-8">
+         <title>Water Board</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       </head>
+       <body> -->
+//Electricity bOard related code!!
+       <!-- <!DOCTYPE html>
+       <html lang="en" dir="ltr">
+         <head>
+           <meta charset="utf-8">
+           <title>Electricity Board</title>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         </head>
+         <body> -->
+
+
+         <!-- <!DOCTYPE html>
+         <html lang="en">
+         <head>
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <title>Bootstrap Simple Login Form</title>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+         <style>
+         .login-form {
+             width: 340px;
+             margin: 50px auto;
+           	font-size: 15px;
+         }
+         .login-form form {
+             margin-bottom: 15px;
+             background: #f7f7f7;
+             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+             padding: 30px;
+         }
+         .login-form h2 {
+             margin: 0 0 15px;
+         }
+         .form-control, .btn {
+             min-height: 38px;
+             border-radius: 2px;
+         }
+         .btn {
+             font-size: 15px;
+             font-weight: bold;
+         }
+         </style>
+         </head>
+         <body> -->
+
+         /* login page below */
+         /* .logo-img1{
+           height: 210px;
+             width: 210px;
+             margin-left: 10px;
+         }
+
+         .body {
+           background-image: linear-gradient(135deg, white 10%, white 100%);
+           background-size: cover;
+           background-repeat: no-repeat;
+           background-attachment: fixed;
+           font-family: "Open Sans", sans-serif;
+           color: #333333;
+         }
+
+         .box-form {
+           margin: 0 auto;
+           width: 60%;
+           background: #FFFFFF;
+           border-radius: 10px;
+           overflow: hidden;
+           align-items:stretch;
+           justify-content: space-between;
+           box-shadow: 0 0 20px 6px #090b6f85;
+         }
+
+         .box-form .left {
+           color: #FFFFFF;
+           background-size: cover;
+           background-repeat: no-repeat;
+           background-image: url("https://www.assureshift.in/sites/default/files/images/blog/best-places-to-live-mysore.jpg");
+           overflow: hidden;
+         }
+         .box-form .left .overlay {
+           padding: 30px;
+           width: 100%;
+           height: 100%;
+           background: #5961f9ad;
+           overflow: hidden;
+           box-sizing: border-box;
+         }
+         .box-form .left .overlay h1 {
+           font-size: 10vmax;
+           line-height: 1;
+           font-weight: 900;
+           margin-top: 40px;
+           margin-bottom: 20px;
+         }
+         .box-form .left .overlay span p {
+           margin-top: 30px;
+           font-weight: 900;
+         }
+         .box-form .left .overlay span a {
+           background: #3b5998;
+           color: #FFFFFF;
+           margin-top: 10px;
+           padding: 14px 50px;
+           border-radius: 100px;
+           display: inline-block;
+           box-shadow: 0 3px 6px 1px #042d4657;
+         }
+         .box-form .left .overlay span a:last-child {
+           background: #1dcaff;
+           margin-left: 30px;
+         }
+         .box-form .right {
+           padding: 40px;
+           overflow: hidden;
+         }
+         @media (max-width: 980px) {
+           .box-form .right {
+             width: 100%;
+           }
+         }
+         .box-form .right h5 {
+           font-size: 6vmax;
+           line-height: 0;
+         }
+         .box-form .right p {
+           font-size: 14px;
+           color: #B0B3B9;
+         }
+         .box-form .right .inputs {
+           overflow: hidden;
+         }
+         .box-form .right  {
+           width: 800%;
+           padding: 10px;
+           margin-top: 25px;
+           font-size: 16px;
+           border: none;
+           outline: none;
+           border-bottom: 2px solid #B0B3B9;
+         }
+         .inputlogin{
+           width: 800%;
+           padding: 10px;
+           margin-top: 25px;
+           font-size: 16px;
+           border: none;
+           outline: none;
+           border-bottom: 2px solid #B0B3B9;
+         }
+         .box-form .right .remember-me--forget-password {
+           display: flex;
+           justify-content: space-between;
+
+           align-items: center;
+         } */
+         /* .box-form .right .remember-me--forget-password input {
+           margin: 0;
+           margin-right: 7px;
+           width: auto;
+         } */
+         /* .box-form .right button {
+           float: right;
+           color: #fff;
+           font-size: 16px;
+           padding: 12px 35px;
+           border-radius: 50px;
+           display: inline-block;
+           border: 0;
+           outline: 0;
+           box-shadow: 0px 4px 20px 0px rgb(90, 159, 206);
+           background-image: linear-gradient(135deg, rgb(90, 159, 206) 10%, rgb(90, 159, 206)100%);
+         } */
+
+         /* label {
+           display: block;
+           position: relative;
+           margin-left: 30px;
+         } */
+
+         /* label::before {
+           content: ' \f00c';
+           position: absolute;
+           font-family: FontAwesome;
+           background: transparent;
+           border: 3px solid rgb(90, 159, 206);
+           border-radius: 4px;
+           color: transparent;
+           left: -30px;
+           transition: all 0.2s linear;
+         } */
+
+         /* label:hover::before {
+           font-family: FontAwesome;
+           content: ' \f00c';
+           color: #fff;
+           cursor: pointer;
+           background: rgb(90, 159, 206);
+         }
+
+         label:hover::before .text-checkbox {
+           background: rgb(90, 159, 206);
+         }
+
+         label span.text-checkbox {
+           display: inline-block;
+           height: auto;
+           position: relative;
+           cursor: pointer;
+           transition: all 0.2s linear;
+         }
+
+         label input[type="checkbox"] {
+           display: none;
+         } */

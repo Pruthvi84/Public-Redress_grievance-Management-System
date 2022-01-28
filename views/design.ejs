@@ -1,0 +1,211 @@
+
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>pgr</title>
+<link rel="stylesheet" href="/css/signupp.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body> -->
+<%- include("partials/header"); -%>
+<div class="formarea">
+
+<h3>Water Board Related Complaints:</h3>
+<table class="table table-hover  ">
+<thead class="tablehead" >
+<tr>
+<th  scope="col">Complaint Id</th>
+<th  scope="col">Phone Number</th>
+<th  scope="col">Address</th>
+<th  scope="col">Photo Link</th>
+<th  scope="col">Status</th>
+<!-- <th scope="col">#</th>
+<th scope="col">First</th>
+<th scope="col">Last</th>
+<th scope="col">Handle</th> -->
+
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items.length > 0){ %>
+<% for(var i = 0;i < items.length;i++) { %>
+<tr >
+
+<td ><%= items[i].complaintid %></td>
+<td ><%= items[i].phonenumber %></td>
+<td ><%= items[i].address %></td>
+<td ><a href="<%= items[i].photolink %>">Photo Link</a></td>
+<td ><%= items[i].status %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+
+<h3>Electricity Board Related Complaints:</h3>
+<table class="table table-hover bg-primary">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Phone Number</th>
+<th scope="col">Address</th>
+<th  scope="col">Photo Link</th>
+<th scope="col">Status</th>
+
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items1.length > 0){ %>
+<% for(var i = 0;i < items1.length;i++) { %>
+<tr>
+
+<td ><%= items1[i].complaintid %></td>
+<td ><%= items1[i].phonenumber %></td>
+<td ><%= items1[i].address %></td>
+<td ><a href="<%= items1[i].photolink %>">Photo Link</a></td>
+<td ><%= items1[i].status %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+<h3>Sewage Board Related Complaints:</h3>
+<table class="table table-hover bg-primary">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Phone Number</th>
+<th scope="col">Address</th>
+<th  scope="col">Photo Link</th>
+<th scope="col">Status</th>
+
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items2.length > 0){ %>
+<% for(var i = 0;i < items2.length;i++) { %>
+<tr>
+
+<td ><%= items2[i].complaintid %></td>
+<td ><%= items2[i].phonenumber %></td>
+<td ><%= items2[i].address %></td>
+<td ><a href="<%= items2[i].photolink %>">Photo Link</a></td>
+<td ><%= items2[i].status %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+
+<h3>Road Maintenance Related Complaints</h3>
+<table class="table table-hover bg-primary">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Phone Number</th>
+<th scope="col">Address</th>
+<th  scope="col">Photo Link</th>
+<th scope="col">Status</th>
+
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items3.length > 0){ %>
+<% for(var i = 0;i < items3.length;i++) { %>
+<tr>
+
+<td><%= items3[i].complaintid %></td>
+<td><%= items3[i].phonenumber %></td>
+<td><%= items3[i].address %></td>
+<td ><a href="<%= items3[i].photolink %>">Photo Link</a></td>
+<td><%= items3[i].status %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+
+<h3>Road Construction Related Complaints</h3>
+<table class="table table-hover bg-primary">
+<thead class="tablehead">
+<tr>
+
+<th scope="col">Complaint id</th>
+<th scope="col">Phone Number</th>
+<th scope="col">Address</th>
+<th  scope="col">Photo Link</th>
+<th scope="col">Status</th>
+
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items4.length > 0){ %>
+<% for(var i = 0;i < items4.length;i++) { %>
+<tr>
+
+<td><%= items4[i].complaintid %></td>
+<td><%= items4[i].phonenumber %></td>
+<td><%= items4[i].address %></td>
+<td ><a href="<%= items4[i].photolink %>">Photo Link</a></td>
+<td><%= items4[i].status %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+
+<h3>Road Transport Related Complaints</h3>
+<table class="table table-hover bg-primary">
+<thead class="tablehead">
+<tr>
+
+<!-- <th scope="col">Address</th> -->
+<th scope="col">Complaint id</th>
+<th scope="col">Phone Number</th>
+<th  scope="col">Photo Link</th>
+<th scope="col">Status</th>
+
+</tr>
+</thead>
+
+<tbody class="tablerow">
+<% if(items5.length > 0){ %>
+<% for(var i = 0;i < items5.length;i++) { %>
+<tr>
+
+<td><%= items5[i].complaintid %></td>
+<td><%= items5[i].phonenumber %></td>
+<td ><a href="<%= items5[i].photolink %>">Photo Link</a></td>
+<!-- <td><%= items5[i].address %></td> -->
+<td><%= items5[i].status %></td>
+
+</tr>
+<% } %>
+<% } %>
+
+</tbody>
+</table>
+</div>
+
+<%- include("partials/footer"); -%>
+<!-- </body>
+</html> -->

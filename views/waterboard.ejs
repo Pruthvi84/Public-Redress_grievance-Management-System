@@ -1,0 +1,101 @@
+
+     <%- include("partials/header"); -%>
+       <form action="/waterboard" method="post" class="formarea" >
+     <div class="form-group">
+       <label for="UserId">Phone Number</label>
+       <input name="phonenumber" type="text" class="form-control tablerow" id="UserID" aria-describedby="UserHelp" placeholder="Enter your Phone Number" required>
+       <small id="UserHelp" class="form-text text-muted">Your Phone Number will be confidential,will not be shared with anyone</small>
+     </div>
+     <div class="form-group">
+       <label for="Address">Address</label>
+       <input type="text" name="AddressWaterBoard" class="form-control tablerow" id="Address" placeholder="Address" required>
+     </div>
+     <div class="form-group">
+       <label for="Landmark">Nearest Landmark</label>
+       <input list="Landmark" name="Landmark" class="form-control tablerow" placeholder="Nearest Landmark" required>
+       <datalist  id="Landmark">
+
+         <option value="JP Nagar">
+         <option value="VishveshwaraNagar">
+         <option value="Bogadi">
+         <option value="SiddharthNagar">
+         <option value="Ramkrishna Nagar">
+         <option value="Srirampura">
+           <option value="Nazarbad">
+           <option value="Vijaynagar 2nd Stage">
+           <option value="Sewage Farm">
+           <option value="TK Layout">
+           <option value="Vidyaranyapuram">
+           <option value="K C Layout">
+           <option value="Nivedita Nagar">
+           <option value="Ilwala">
+           <option value="Hootgalli">
+           <option value="Kuvempunagar">
+           <option value="Saraswathipuram">
+           <option value="Near Kukkrahalli Lake">
+           <option value="Mysore Zoo">
+           <option value="Ittigegudu">
+           <option value="Yadavgiri">
+           <option value="Rajiv Nagar">
+           <option value="Vontikoppal">
+           <option value="Jayalakshmi Puram">
+           <option value="Kalidasa Road">
+           <option value="Ramaswamy Circle">
+           <option value="Agrahara">
+           <option value="Ashoka Road">
+           <option value="DD Urs Road">
+           <option value="Bannimantap">
+           <option value="Ring Road">
+           <option value="Mandi Mohalla">
+           <option value="Sub Urban Bus Stand">
+           <option value="Mysore Railway Station">
+           <option value="MG Road">
+        </datalist>
+     </div>
+     <div class="form-group">
+     <label for="WaterAvailability">Is your complain related to availability of water?</label><br>
+
+      <div class="form-check form-check-inline mb-0 me-4">
+      <input class="form-check-input tablerow" type="radio" name="WaterAvailability" id="YesWater" value="Yes" required/>
+      <label class="form-check-label" for="YesWater">Yes</label>
+      </div>
+
+   <div class="form-check form-check-inline mb-0 me-4">
+   <input class="form-check-input tablerow" type="radio" name="WaterAvailability" id="NoWater" value="No" required/>
+   <label class="form-check-label" for="NoWater">No</label>
+   </div>
+</div>
+   <div class="form-group">
+   <label for="MeterFault">Is your complain related to meter fault?</label><br>
+   <div class="form-check form-check-inline mb-0 me-4">
+   <input class="form-check-input tablerow" type="radio" name="MeterFault" id="YesMeter" value="Yes" required/>
+   <label class="form-check-label" for="YesMeter">Yes</label>
+   </div>
+
+<div class="form-check form-check-inline mb-0 me-4">
+<input class="form-check-input tablerow" type="radio" name="MeterFault" id="NoWater" value="No" required/>
+<label class="form-check-label" for="NoMeter">No</label>
+</div>
+
+   </div>
+   <div class="form-group">
+   <label for="PipelineAndInfrastructure">Is your complain related to necessity of Pipeline and Infrastructure?</label><br>
+   <div class="form-check form-check-inline mb-0 me-4">
+   <input class="form-check-input tablerow" type="radio" name="PipelineAndInfrastructure" id="YesPipeline" value="Yes" required/>
+   <label class="form-check-label" for="YesPipeline">Yes</label>
+   </div>
+
+<div class="form-check form-check-inline mb-0 me-4">
+<input class="form-check-input tablerow" type="radio" name="PipelineAndInfrastructure" id="NoPipeline" value="No" required/>
+<label class="form-check-label" for="NoPipeline">No</label>
+</div>
+ </div>
+   <div class="form-group">
+       <label for="exampleFormControlTextarea1">Use this TextBox to kindly inform us more about the complaints you are facing </label>
+       <textarea class="form-control tablerow" id="exampleFormControlTextarea1" name="textWB" rows="3"></textarea>
+     </div>
+     <input type="submit" class="btn btn-primary">
+   </form>
+   <%- include("partials/footer"); -%>
+     <!-- </body>
+   </html> -->

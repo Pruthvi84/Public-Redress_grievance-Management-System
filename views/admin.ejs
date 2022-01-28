@@ -1,0 +1,20 @@
+<%- include("partials/header"); -%>
+<div class="login-form">
+    <form action="/adminlogin" method="post">
+        <h2 class="text-center">Admin Login</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Admin Id" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn-login btn-primary btn-block">Log In</button>
+        </div>
+        <div class="clearfix">
+            <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+            <a href="/adminlogin" class="float-right">Forget Password</a>
+        </div>
+    </form>
+</div>
+<%- include("partials/footer"); -%>

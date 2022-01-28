@@ -1,0 +1,50 @@
+<%- include("partials/header"); -%>
+<form  action="/grievance" method="post" class="formarea">
+
+  <div class="form-group">
+    <label for="Landmark">Nearest Landmark</label>
+    <input list="Landmark" name="landmark" class="form-control" placeholder="Nearest Landmark">
+    <datalist  id="Landmark">
+
+      <option value="JP Nagar">
+      <option value="VishveshwaraNagar">
+      <option value="Bogadi">
+      <option value="SiddharthNagar">
+      <option value="Ramkrishna Nagar">
+      <option value="Srirampura">
+        <option value="Nazarbad">
+        <option value="Vijaynagar 2nd Stage">
+        <option value="Sewage Farm">
+        <option value="TK Layout">
+        <option value="Vidyaranyapuram">
+        <option value="K C Layout">
+        <option value="Nivedita Nagar">
+        <option value="Ilwala">
+        <option value="Hootgalli">
+        <option value="Kuvempunagar">
+        <option value="Saraswathipuram">
+        <option value="Near Kukkrahalli Lake">
+        <option value="Mysore Zoo">
+        <option value="Ittigegudu">
+        <option value="Yadavgiri">
+        <option value="Rajiv Nagar">
+        <option value="Vontikoppal">
+        <option value="Jayalakshmi Puram">
+        <option value="Kalidasa Road">
+        <option value="Ramaswamy Circle">
+        <option value="Agrahara">
+        <option value="Ashoka Road">
+        <option value="DD Urs Road">
+        <option value="Bannimantap">
+        <option value="Ring Road">
+        <option value="Mandi Mohalla">
+        <option value="Sub Urban Bus Stand">
+        <option value="Mysore Railway Station">
+        <option value="MG Road">
+     </datalist>
+  </div>
+
+<button type="submit" name="button" class="btn btn-primary">submit</button>
+</form>
+<!-- <a href="/design">users</a> -->
+<%- include("partials/footer"); -%>
